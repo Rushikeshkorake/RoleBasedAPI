@@ -60,6 +60,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
     options.AddPolicy("ContributorPolicy", policy => policy.RequireRole("Contributor"));
     options.AddPolicy("ViewerPolicy", policy => policy.RequireRole("Viewer"));
+    options.AddPolicy("AllRolesPolicy", policy => policy.RequireRole("Admin", "Contributor", "Viewer"));
+
 });
 
 var app = builder.Build();

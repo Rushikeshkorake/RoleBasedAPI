@@ -18,7 +18,7 @@ namespace RoleBasedAPI.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Policy = "AdminPolicy")]
         [HttpPost("UploadDocument")]
         public async Task<IActionResult> UploadDocument(IFormFile file, [FromForm] string title, [FromForm] string tags)
         {
@@ -59,7 +59,7 @@ namespace RoleBasedAPI.Controllers
             return Ok(new { message = "Document uploaded successfully.", documentId = document.Id });
         }
 
-        [Authorize(Roles = "Admin,Contributor,Viewer")]
+        [Authorize(Policy = "AllRolesPolicy")]
         [HttpGet("search")]
         public async Task<IActionResult> SearchDocuments(string searchTerm)
         {
@@ -76,7 +76,7 @@ namespace RoleBasedAPI.Controllers
             return Ok(documents);
         }
 
-        [Authorize(Roles = "Admin,Contributor,Viewer")]
+        [Authorize(Policy = "AllRolesPolicy")]
         [HttpGet("GetDocument/{id}")]
         public async Task<IActionResult> GetDocument(int id)
         {
