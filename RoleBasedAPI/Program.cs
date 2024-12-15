@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using RoleBasedAPI.Data;
+using System.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +16,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(option =>
-option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+option.UseNpgsql(builder.Configuration.GetConnectionString("IdentityConnection")));
+
+builder.Services.AddDbContext<DocumentDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DocumentConnection")));
+
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options=>
 
