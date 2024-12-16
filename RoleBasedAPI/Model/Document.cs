@@ -1,4 +1,6 @@
-﻿namespace RoleBasedAPI.Model
+﻿using Sieve.Attributes;
+
+namespace RoleBasedAPI.Model
 {
     public class Document
     {
@@ -7,6 +9,7 @@
         public string Tags { get; set; }
         public string FilePath { get; set; }
         public string UploadedBy { get; set; }
+
         public DateTime UploadedDate { get; set; }
     }
 }

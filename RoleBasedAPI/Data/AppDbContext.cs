@@ -17,5 +17,10 @@ namespace RoleBasedAPI.Data
     {
         public DocumentDbContext(DbContextOptions<DocumentDbContext> options) : base(options) { }
         public DbSet<Document> Documents { get; set; }
+
+        internal IQueryable<Document> Apply(string searchTerm)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
