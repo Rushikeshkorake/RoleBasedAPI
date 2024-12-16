@@ -50,7 +50,6 @@ option.UseNpgsql(builder.Configuration.GetConnectionString("IdentityConnection")
 
 builder.Services.AddDbContext<DocumentDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DocumentConnection")));
-builder.Services.AddScoped<SieveProcessor>();
 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options=>
