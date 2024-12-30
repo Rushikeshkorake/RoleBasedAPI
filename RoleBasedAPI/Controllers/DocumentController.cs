@@ -84,7 +84,7 @@ namespace RoleBasedAPI.Controllers
 
 
 
-        [Authorize(Policy = "AdminPolicy")]
+        [Authorize(Policy = "AllRolesPolicy")]
         [HttpGet("search")]
         public async Task<IActionResult> SearchDocuments(string searchTerm)
         {
